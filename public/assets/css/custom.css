@@ -1,0 +1,12 @@
+.attributes-field input {
+  width: 120px;
+}
+
+.attributes-field:not(:first-child) input {
+  margin-right: 3.5px; 
+  margin-top: 5px;
+}
+
+.tab-pane.active{
+  display: flex;
+}
