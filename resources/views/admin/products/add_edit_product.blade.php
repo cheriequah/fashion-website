@@ -16,7 +16,6 @@
           <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
               <h5 class="mb-0">{{ $title }}</h5>
-              <small class="text-muted float-end">Default label</small>
             </div>
             <div class="card-body">
               <form name="productForm" id="productForm" method="POST" enctype="multipart/form-data"

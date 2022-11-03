@@ -15,12 +15,13 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function index() {
+        $categories = Category::select('name','slug')->get()->toArray();
         $featuredProductsCount = Product::where('is_featured','Yes')->count();
         $featuredProducts = Product::where('is_featured','Yes')->get()->toArray();
-        $featuredProductsChunk = array_chunk($featuredProducts, 4);
+        //$featuredProductsChunk = array_chunk($featuredProducts, 4);
         //echo "<pre>"; print_r($featuredProductsChunk); die;
-        //dd($featuredProducts); die;
-        return view('front.index')->with(compact('featuredProductsChunk'));
+        //dd($category); die;
+        return view('front.index')->with(compact('featuredProducts','categories'));
     }
 
     

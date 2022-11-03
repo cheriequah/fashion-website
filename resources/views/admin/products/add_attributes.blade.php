@@ -55,6 +55,10 @@
                             <div class="mb-3">
                                 <label for="color_id" class="form-label">Product Color: {{ $productData->color->type }}</label>                   
                             </div>
+
+                            <div class="mb-3">
+                                <label for="color_id" class="form-label">Product Price: RM {{ $productData->price }}</label>                   
+                            </div>
                         </div>
 
                         <div class="col-md-6">
@@ -63,7 +67,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-3">
                             <div class="field_wrapper">
                                 <div class="attributes-field">
                                     <input type="text" id="size" name="size[]" value="" placeholder="Size" required />
@@ -87,7 +91,7 @@
                 <div class="card mb-4">
                     <!--Display Attributes-->
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Added Product Attributes</h5>         
+                        <h5 class="mb-0">Edit Product Attributes</h5>         
                     </div>
                     <div class="card-body">
                         <div class="table-responsive text-nowrap">

@@ -47,6 +47,7 @@ class AdminController extends Controller
     */
     //$this->validate($request,$rules,$customMessages);
 
+            // If the authentication admin guard check that the email and password is correct
             if (Auth::guard('admin')->attempt(['email'=>$data['email'], 'password'=>$data['password']])) {
                 return redirect('admin/dashboard');
             }

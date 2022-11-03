@@ -61,13 +61,10 @@ class ProductController extends Controller
             //to save data
             $product = Product::find($id);   
             $message = "Product Updated Succesfully!";
-            //$productData = json_decode(json_encode($productData));
-            //echo "<pre>"; print_r($productData); die;
         }
 
         if ($request->isMethod('post')) {
             $data = $request->all();
-            //echo "<pre>"; print_r($data); die;
 
             //Product validation
             $request->validate([
@@ -88,19 +85,25 @@ class ProductController extends Controller
             if ($request->hasFile('product_img')) {
                 $img_tmp = $request->file('product_img');
                 if ($img_tmp->isValid()) {
+                    // returns original file name
                     $img_name = $img_tmp->getClientOriginalName();
+
+                    // return original file extension
                     $extension = $img_tmp->getClientOriginalExtension();
+
+                    // creates a new file name
                     $img_new_name = $img_name.'-'.rand(111,99999).'.'.$extension;
-                    //echo "<pre>"; print_r($img_new_name); die;
+
+                    // set the path for different size image
                     $large_img_path = 'assets/img/product_images/large/'.$img_new_name;
                     $medium_img_path = 'assets/img/product_images/medium/'.$img_new_name;
                     $small_img_path = 'assets/img/product_images/small/'.$img_new_name;
                     Image::make($img_tmp)->save($large_img_path); //W:1040 H:1200
+
+                    // resize image
                     Image::make($img_tmp)->resize(400,400)->save($medium_img_path);
                     Image::make($img_tmp)->resize(200,200)->save($small_img_path);
                     $product->image = $img_new_name;
-                    
-
                 }
             } 
             else {
@@ -135,18 +138,13 @@ class ProductController extends Controller
         $materials = Material::get();         
 
         $categoryLevels = Category::with(['subcategories'])->where(['parent_id'=>NULL,'status'=>1])->get();
-        //$categoryLevels = json_decode(json_encode($categoryLevels));
-        //echo "<pre>"; print_r($categoryLevels); die;
-
-        //$getPatterns = json_decode(json_encode($getPatterns));
-        //echo "<pre>"; print_r($getPatterns); die;
-
+/*
         $colorArray = array('');
         $patternArray = array('');
         $occasionArray = array('');
         $sleeveArray = array('');
         $materialArray = array('');
-
+*/
         return view('admin.products.add_edit_product')->with(compact('title','categoryLevels','productData','colors','patterns','occasions','sleeves','materials'));
     }
 
@@ -226,10 +224,10 @@ class ProductController extends Controller
             Session::flash('success_message', $message);
             return redirect()->back();
         }
-        $productData = Product::select('id','name','code','color_id','image')->with('color','attributes')->find($id);
+        $productData = Product::select('id','name','code','price','color_id','image')->with('color','attributes')->find($id);
         //$productData = json_decode(json_encode($productData));
         //echo "<pre>"; print_r($productData); die;
-        $title = "Product Attributes";
+        $title = "Add Product Attributes";
         return view('admin.products.add_attributes')->with(compact('productData','title'));
     }
 

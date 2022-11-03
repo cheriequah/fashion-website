@@ -23,7 +23,7 @@ $sleeves = Sleeve::getSleeves();
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Our Shop</h1>
             <div class="d-inline-flex">
-                <p class="m-0"><a href="">Home</a></p>
+                <p class="m-0"><a href="url('/')">Home</a></p>
                 <p class="m-0 px-2">-</p>
                 <p class="m-0">Shop</p>
             </div>
@@ -117,8 +117,8 @@ $sleeves = Sleeve::getSleeves();
 
                     <div class="wrap-pagniation-info">
                         <!--if isset and not empty the value of orderby, append into pagination link-->
-                        @if (isset($_GET['orderby']) && !empty($_GET['orderby']))
-                            {{ $categoryProducts->appends(['orderby' => $_GET['orderby']])->links() }}   
+                        @if (isset($data['orderby']) && !empty($data['orderby']))
+                            {{ $categoryProducts->appends(['orderby' => $data['orderby']])->links() }}   
                         @else
                             {{ $categoryProducts->links() }}
                         @endif

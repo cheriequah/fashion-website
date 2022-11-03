@@ -21,8 +21,11 @@ class DatabaseSeeder extends Seeder
         //$this->call(OccasionSeeder::class);
         //$this->call(PatternSeeder::class);
         //$this->call(SleeveSeeder::class);
-        $this->call(ProductSeeder::class);
+        //$this->call(ProductSeeder::class);
         //$this->call(ProductsAttributesSeeder::class);
+        //$this->call(DeliveryAddressSeeder::class);
+        //$this->call(OrderStatusSeeder::class);
+        $this->call(ReviewsSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

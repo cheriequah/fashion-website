@@ -1,3 +1,7 @@
+body {
+  background-image: none;
+}
+
 .attributes-field input {
   width: 120px;
 }
@@ -7,6 +11,54 @@
   margin-top: 5px;
 }
 
-.tab-pane.active{
-  display: flex;
+/* ratings */
+.rate {
+  float: left;
+  height: 46px;
+  padding: 0 10px;
+}
+.rate:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+}
+.rate:not(:checked) > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
+}
+.rate:not(:checked) > label:before {
+  content: '★ ';
+}
+.rate > input:checked ~ label {
+  color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+
+/* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+
+#tab-pane-3 .star {
+  font-size: 25px;
+}
+
+.avg-rating .star {
+  font-size: 18px;
+}
+@media (min-width: 768px) {
+  .filter_products .tab-pane.active{
+    display: flex;
+  }
 }

@@ -1,4 +1,11 @@
 $(document).ready(function() {
+    //419 error
+    $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $("#current_pw").keyup(function() {
         var current_pw = $("#current_pw").val();
         alert(current_pw);
@@ -13,7 +20,8 @@ $(document).ready(function() {
         });
     });
 
-    $(document).on("click",".updateCategoryStatus",function() {
+    //$(document).on("click",".updateCategoryStatus",function() {
+    $(".updateCategoryStatus").click(function() {
         var status = $(this).text();
         var category_id = $(this).attr("category_id");
         $.ajax({
@@ -35,6 +43,31 @@ $(document).ready(function() {
         });
         //alert(status);
         //alert(category_id);
+    });
+
+    // Update Review Status
+    $(".updateReviewStatus").click(function() {
+        var status = $(this).text();
+        var review_id = $(this).attr("review_id");
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-review-status',
+            data: {status:status, review_id:review_id},
+            success: function(resp) {
+                //alert(resp['status']);
+                //alert(resp['review_id']);
+                if (resp['status'] == 0) {
+                    $("#review-"+review_id).html("<a class='updateReviewStatus' href='javascript:void(0)'><span class='badge bg-label-secondary me-1'>Unapproved</span></a>");
+                }
+                else if (resp['status'] == 1) {
+                    $("#review-"+review_id).html("<a class='updateReviewStatus' href='javascript:void(0)'><span class='badge bg-label-success me-1'>Approved</span></a>");
+                }
+            },error:function() {
+                alert("Error");
+            }
+        });
+        //alert(status);
+        //alert(product_id);
     });
 
     $(".updateProductStatus").click(function() {
@@ -94,14 +127,13 @@ $(document).ready(function() {
         return false;
     })*/
 
-    // Confirmation for delete SweetAlert
-    
+    // Confirmation for delete SweetAlert   
     $(document).on("click",".confirmDelete",function() {
         var record = $(this).attr("record");
         var record_id = $(this).attr("record_id");
         Swal.fire({
             title: 'Are you sure?',
-            text: "If parent category is deleted, Child category will all be deleted.You won't be able to revert this!",
+            text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

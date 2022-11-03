@@ -16,8 +16,7 @@
         <div class="col-xl">
           <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
-              <h5 class="mb-0">Update Password</h5>
-              <small class="text-muted float-end">Default label</small>
+              <h5 class="mb-0">Update Password</h5>          
             </div>
             <div class="card-body">
               <form name="updatePwForm" id="updatePwForm" method="POST" action="{{ url('admin/update-pw') }}">

@@ -58,7 +58,7 @@
           </g>
         </svg>
       </span>
-      <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+      <span class="app-brand-text demo menu-text fw-bolder ms-2">Pearl Wonder</span>
     </a>
 
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -78,7 +78,7 @@
     <li class="menu-item {{ $active }}">
       <a href="{{ route('admin.dashboard') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
-        <div data-i18n="Analytics">Dashboard</div>
+        <div>Dashboard</div>
       </a>
     </li>
 
@@ -100,7 +100,7 @@
         
         <li class="menu-item {{ $active }}">
           <a href="{{ route('admin.categories') }}" class="menu-link">
-            <div data-i18n="Account">All Category</div>
+            <div>All Category</div>
           </a>
         </li>    
       </ul>
@@ -113,17 +113,57 @@
     <li class="menu-item {{ $active }}">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-        <div data-i18n="Misc">Products</div>
+        <div>Products</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item {{ $active }}">
           <a href="{{ route('admin.products') }}" class="menu-link">
-            <div data-i18n="Error">All Products</div>
+            <div>All Products</div>
           </a>
         </li>     
       </ul>
     </li>
     
+        @if (Session::get('page')=="orders")
+          <?php $active = "active"; ?>
+        @else
+          <?php $active = ""; ?>
+        @endif
+      <li class="menu-item {{ $active }}">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+        <div>Orders</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item {{ $active }}">
+          <a href="{{ route('admin.orders') }}" class="menu-link">
+            <div>All Orders</div>
+          </a>
+        </li>     
+      </ul>
+    </li>
+
+    @if (Session::get('page')=="reviews")
+    <?php $active = "active"; ?>
+    @else
+      <?php $active = ""; ?>
+    @endif
+    <li class="menu-item {{ $active }}">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+      <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+      <div>Reviews</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item {{ $active }}">
+          <a href="{{ route('admin.reviews') }}" class="menu-link">
+            <div>All Reviews</div>
+          </a>
+        </li>     
+      </ul>
+    </li>
   </ul>
+  
+
+
 </aside>
 <!-- / Menu -->

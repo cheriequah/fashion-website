@@ -6,7 +6,7 @@
             <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{url('/')}}">About Us</a></li>
+                    <!--
                     <li class="nav-item"><a class="nav-link" href="{{url('/shop')}}">Shop</a></li>
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
@@ -15,50 +15,29 @@
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="#!">Popular Items</a></li>
                         <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                    </ul>
+                    </ul>-->
                 </li>
                 </ul>
 
                 <ul class="navbar-nav ms-auto">
-                    @if (Route::has('login'))
-                        @auth
-                           @if (Auth::user()->utype === 'A')
-                                <!--Admin-->
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="{{ route('admin.dashboard')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dashboard ({{Auth::user()->name}})</a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="{{ route('admin.dashboard')}}">Dashboard</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-                                        <form id="logout-form" method="POST" action="{{ route('logout')}}">
-                                            @csrf
-                                        </form>
-                                    </ul>
-                                </li>
-                                
-                           @else
-                               <!--User-->
-                               <li class="nav-item dropdown"> 
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">My Account ({{Auth::user()->name}})</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('user.dashboard')}}">Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-                                    <form id="logout-form" method="POST" action="{{ route('logout')}}">
-                                        @csrf
-                                    </form>
-                                </ul>
-                            </li>
-                           @endif
-                        @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login')}}">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register')}}">Register</a>
-                            </li>
-                        @endif
-                       
-                    @endif
-                    
+                    @if (Auth::check())
+                        <!--User-->
+                        <li class="nav-item dropdown"> 
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">My Account ({{Auth::user()->name}})</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ route('account') }}">My Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ route('order') }}">My Orders</a></li>
+                                <li><a class="dropdown-item" href="{{ route('preferences') }}">My Preferences</a></li>
+                                <li><a class="dropdown-item" href="{{ route('measurement') }}">My Measurement</a></li>
+                                <li><a class="dropdown-item" href="{{ route('calculator') }}">Size Calculator</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logoutUser')}}">Logout</a></li> 
+                            </ul>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login-register')}}">Login/ Register</a>
+                        </li>
+                    @endif     
                 </ul>
             </div>
         </div>

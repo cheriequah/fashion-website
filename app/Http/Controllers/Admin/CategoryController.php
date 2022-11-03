@@ -66,8 +66,7 @@ class CategoryController extends Controller
 
         // with() Calls the subcategories method in model, get data where parent id is main category and status is active
         $categoryLevels = Category::with(['subcategories'])->where(['parent_id'=>NULL,'status'=>1])->get();
-        //$categoryLevels = json_decode(json_encode($categoryLevels));
-        //echo "<pre>"; print_r($categoryLevels); die;
+
         if ($request->isMethod('post')) {
             $data = $request->all();
             //$data = json_decode(json_encode($data));
@@ -76,7 +75,7 @@ class CategoryController extends Controller
             //Category validation
             $request->validate([
                 //name is attribute name from view
-                //dosnt accept space
+                //doesnt accept space
                 'category_name' => 'regex:/^[a-zA-Z]+$/u',
             ]);
 

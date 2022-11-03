@@ -18,6 +18,7 @@
     <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ url('assets/img/sneat_img/favicon/favicon.ico') }}" />
@@ -73,9 +74,7 @@
           <!-- Content wrapper -->
           <div class="content-wrapper">
             @yield('content')
-
-            @include('layouts.admin_layout.admin_footer')
-            
+         
             <div class="content-backdrop fade"></div>
           </div>
           <!-- Content wrapper -->
@@ -87,15 +86,6 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-
-    <div class="buy-now">
-      <a
-        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
-    </div>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->

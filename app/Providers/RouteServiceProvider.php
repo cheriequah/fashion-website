@@ -36,6 +36,9 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+        // Load all commands in botman.php
+        //require(base_path('routes/botman.php'));
     }
 
     /**

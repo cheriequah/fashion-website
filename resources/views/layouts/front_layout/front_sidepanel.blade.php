@@ -5,9 +5,9 @@
         <form>
             <div class="list-group">
                 @foreach ($categories as $category)
-                    <a href="{{ url('shop/'.$category->slug) }}" class="list-group-item"><strong>&gt;&nbsp;{{ $category->name }}</strong></a>
+                    <a href="{{ url('/'.$category->slug) }}" class="list-group-item"><strong>&gt;&nbsp;{{ $category->name }}</strong></a>
                     @foreach ($category->subcategories as $subcategory)
-                        <a href="{{ url('shop/'.$subcategory->slug) }}" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;{{ $subcategory->name }}</a>
+                        <a href="{{ url('/'.$subcategory->slug) }}" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;{{ $subcategory->name }}</a>
                     @endforeach
                 @endforeach
                 
@@ -36,7 +36,7 @@
                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                     <input type="checkbox" class="pattern" id="{{ $pattern['id'] }}" name="{{ $pattern['name'] }}" value="{{ $pattern['id'] }}">
                     <label class="custom-control-label" for="price-all">{{ $pattern['name'] }}</label>
-                    <span class="badge border font-weight-normal">1000</span>
+                    <span class="badge border font-weight-normal">{{ 1000 }}</span>
                 </div>
             @endforeach 
     </div>
@@ -62,7 +62,7 @@
         <form>
             @foreach ($colors as $color)
                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input type="checkbox" class="color" id="{{ $color->id }}" name="{{ $color->type }}">
+                    <input type="checkbox" class="color" id="{{ $color->id }}" name="{{ $color->type }}" value="{{ $color->id }}">
                     <label class="custom-control-label" for="color-1">{{ $color->type }}</label>
                     <span class="badge border font-weight-normal">150</span>
                 </div>
@@ -77,7 +77,7 @@
         <form>
             @foreach ($sleeves as $sleeve)
                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input type="checkbox" class="sleeve" id="{{ $sleeve->id }}" name="{{ $sleeve->type }}">
+                    <input type="checkbox" class="sleeve" id="{{ $sleeve->id }}" name="{{ $sleeve->type }}" value="{{ $sleeve->id }}">
                     <label class="custom-control-label" for="color-1">{{ $sleeve->type }}</label>
                     <span class="badge border font-weight-normal">150</span>
                 </div>
@@ -92,7 +92,7 @@
         <form>
             @foreach ($materials as $material)
                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                    <input type="checkbox" class="material" id="{{ $material->id }}" name="{{ $material->type }}">
+                    <input type="checkbox" class="material" id="{{ $material->id }}" name="{{ $material->type }}" value="{{ $material->id }}">
                     <label class="custom-control-label" for="color-1">{{ $material->type }}</label>
                     <span class="badge border font-weight-normal">150</span>
                 </div>

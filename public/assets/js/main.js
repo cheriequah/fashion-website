@@ -83,7 +83,7 @@
         }
     });
 
-
+/*
     // Item Quantity
     $('.quantity button').on('click', function () {
         var button = $(this);
@@ -99,6 +99,6 @@
         }
         button.parent().parent().find('input').val(newVal);
     });
-    
+    */
 })(jQuery);
 
