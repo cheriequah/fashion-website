@@ -18,7 +18,7 @@
               <h5 class="mb-0">{{ $title }}</h5>
             </div>
             <div class="card-body">
-              <form name="categoryForm" id="categoryForm" method="POST" 
+              <form name="categoryForm" id="categoryForm" method="POST" enctype="multipart/form-data"
               @if (empty($categoryData->id)) 
                 action="{{ url('admin/add-edit-category') }}"      
               @else
@@ -76,6 +76,19 @@
                     value="{{ old('category_slug') }}"
                   @endif required />
                 </div>
+
+                <div class="mb-3">
+                  <label for="category_img" class="form-label">Category Image</label>
+                  <input name="category_img" id="category_img" class="form-control" type="file" />
+                  @if (!empty($categorytData->image))
+                    <div><img style="width: 120px;" src="{{ asset('assets/img/category_images/small/'.$categoryData->image) }}" alt="">
+                    &nbsp;
+                    <a class="confirmDelete" href="javascript:void(0)" record="category-image" record_id="{{ $categoryData->id }}"><i class="bx bx-trash me-2"></i>Delete</a>
+                    </div>
+                  @endif
+                  <div>Recommended Image Size: 500 x 500</div>
+                </div>
+
                 <div class="mb-3">
                     <label class="form-label" for="category_discount">Discount</label>
                     <input type="text" class="form-control" id="category_discount" name="category_discount" placeholder="Enter Discount" 

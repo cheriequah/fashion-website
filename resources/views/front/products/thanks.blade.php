@@ -16,7 +16,7 @@
           <div>
             <h3>Your Order Has Been Places Successfully</h3>
             <p>Your Order Number is {{ Session::get('order_id') }} and Total is RM {{ Session::get('total') }}</p>
-            <button class="btn btn-md"><a href="{{ route('orders') }}">Check My Orders</a></button>
+            <button class="btn btn-md"><a href="{{ route('order') }}">Check My Orders</a></button>
           </div>
         </div>
     </div>

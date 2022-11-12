@@ -14,7 +14,7 @@
         <td>&nbsp;</td>
     </tr>    
     <tr>
-        <td>Your order deatils are as below:-</td>
+        <td>Your order details are as below:-</td>
     </tr>   
     <tr>
         <td>&nbsp;</td>

@@ -90,7 +90,8 @@ class ProductsController extends Controller
                 else {
                     $categoryProducts->orderBy('id','Desc');
                 }
-                $categoryProducts = $categoryProducts->paginate(3);
+                $categoryProducts = $categoryProducts->paginate(5);
+
                 //echo "<pre>"; print_r($categoryProducts); die;
                 return view('front.products.ajax_products')->with(compact('categoryDetails','categoryProducts','slug','data'));
             }
@@ -111,7 +112,7 @@ class ProductsController extends Controller
                 //echo "<pre>"; print_r($categoryDetails); 
                 //check category_id column with value from the array, get products by category
                 $categoryProducts = Product::whereIn('category_id',$categoryDetails['categoryIds'])->where('status',1);             
-                $categoryProducts = $categoryProducts->paginate(3);
+                $categoryProducts = $categoryProducts->paginate(5);
                 //echo "<pre>"; print_r($categoryProducts); die;
 
                 // Get Product Filters
@@ -371,6 +372,15 @@ class ProductsController extends Controller
                 $cartItem->product_price = $getDiscountAttrPrice['final_price'];
                 $cartItem->product_qty = $item['quantity'];
                 $cartItem->save();
+
+                if ($data['payment_method'] == "COD") {
+                    // Reduce Stock when order is placed
+                    $getProductStocks = ProductsAttributes::where(['product_id'=>$item['product_id'],'size'=>$item['size']])->first()->toArray();
+                    // Stock - cart item quantity
+                    $newStock = $getProductStocks['stock'] - $item['quantity'];
+                    ProductsAttributes::where(['product_id'=>$item['product_id'],'size'=>$item['size']])->update(['stock'=>$newStock]);
+                    // Reduce Stock Ends
+                }
             }       
 
             // Insert order Id in Session variable

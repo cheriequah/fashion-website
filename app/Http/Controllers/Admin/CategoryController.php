@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use PhpParser\JsonDecoder;
+use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {
@@ -76,8 +77,36 @@ class CategoryController extends Controller
             $request->validate([
                 //name is attribute name from view
                 //doesnt accept space
-                'category_name' => 'regex:/^[a-zA-Z]+$/u',
+                'category_name' => 'regex:/^[a-zA-Z -]+$/u',
             ]);
+
+            if ($request->hasFile('category_img')) {
+                $img_tmp = $request->file('category_img');
+                if ($img_tmp->isValid()) {
+                    // returns original file name
+                    $img_name = $img_tmp->getClientOriginalName();
+
+                    // return original file extension
+                    $extension = $img_tmp->getClientOriginalExtension();
+
+                    // creates a new file name
+                    $img_new_name = $img_name.'-'.rand(111,99999).'.'.$extension;
+
+                    // set the path for different size image
+                    $large_img_path = 'assets/img/category_images/large/'.$img_new_name;
+                    $medium_img_path = 'assets/img/category_images/medium/'.$img_new_name;
+                    $small_img_path = 'assets/img/category_images/small/'.$img_new_name;
+                    Image::make($img_tmp)->save($large_img_path); //W:1040 H:1200
+
+                    // resize image
+                    Image::make($img_tmp)->resize(400,400)->save($medium_img_path);
+                    Image::make($img_tmp)->resize(200,200)->save($small_img_path);
+                    $category->image = $img_new_name;
+                }
+            } 
+            else {
+                $category->image = "";
+            }
 
             //$data["name: input that is POST form the view"]
             $category->parent_id = $data['parent_id'];

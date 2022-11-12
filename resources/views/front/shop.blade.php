@@ -57,10 +57,10 @@ $sleeves = Sleeve::getSleeves();
         
                                 <div class="d-flex align-items-center justify-content-between float-end">
         
-                                  <form name="sort-products" id="sort-products" action="">
+                                  <form name="sort-products" id="sort-products">
                                     <input type="hidden" id="slug" name="slug" value="{{ $slug }}">
                                     <div class="sort-item orderby">
-                                        <select name="orderby" id="orderby" class="chosen form-select form-select-sm">
+                                        <select name="orderby" id="orderby" class="form-select form-select-sm">
                                             <option value="">Default sorting</option>
                                             <option value="sort_latest" @if (isset($_GET['orderby']) && $_GET['orderby']=="sort_latest") selected=""                    
                                             @endif>Sort by Latest</option>
@@ -77,7 +77,7 @@ $sleeves = Sleeve::getSleeves();
                                 </form>
         
                                     <div class="sort-item product-per-page">
-                                        <select name="items-per-page" class="use-chosen form-select form-select-sm">
+                                        <select name="items-per-page" class="form-select form-select-sm">
                                             <option value="12">12 per page</option>
                                             <option value="15">15 per page</option>
                                             <option value="18">18 per page</option>
@@ -107,7 +107,7 @@ $sleeves = Sleeve::getSleeves();
                         </div>
                     </div>
                   
-                    <div class="tab-content filter_products">
+                    <div class="col-12 tab-content filter_products">
                         @include('front.products.ajax_products')
                         {{--<div class="tab-pane fade show" id="list">
                             <h4 class="mt-2">Home tab content</h4>
@@ -117,10 +117,13 @@ $sleeves = Sleeve::getSleeves();
 
                     <div class="wrap-pagniation-info">
                         <!--if isset and not empty the value of orderby, append into pagination link-->
-                        @if (isset($data['orderby']) && !empty($data['orderby']))
-                            {{ $categoryProducts->appends(['orderby' => $data['orderby']])->links() }}   
+                        
+                        @if (isset($_GET['orderby']) && !empty($_GET['orderby']))
+                            {{ $categoryProducts->appends(['orderby' => $_GET['orderby']])->links() }}   
                         @else
                             {{ $categoryProducts->links() }}
+                            <?php print_r($_GET); ?>
+                            <!--{{ $categoryProducts->appends(['orderby' => 'vote'])->links() }}   -->
                         @endif
                         
                            

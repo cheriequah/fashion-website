@@ -34,7 +34,7 @@ class UsersController extends Controller
             }else {
                 $request->validate([
                     'mobile' => 'numeric|digits:10',
-                    
+                    'password' => 'min:6'
                 ]);
 
                 // Register the user

@@ -130,7 +130,9 @@ Route::namespace('App\Http\Controllers\Front')->group(function() {
     /*Route::post('/botman', function() {
         app('botman')->listen();
     });*/
-    
+    Route::match(['GET','POST'],'/size-calculator',[UsersController::class,'sizeCalculator'])->name('calculator');
+    //Route::post('/size-calculator-tops',[UsersController::class,'sizeCalculatorTops'])->name('calculatorTops');
+    //Route::post('/size-calculator-bottoms',[UsersController::class,'sizeCalculatorBottoms'])->name('calculatorBottoms');
 
     // If not authenticate redirect to login/register (authenticate.php)
     Route::group(['middleware'=>['auth']],function() {
@@ -155,11 +157,7 @@ Route::namespace('App\Http\Controllers\Front')->group(function() {
 
         Route::get('/remove-delivery-address/{id}',[ProductsController::class,'removeDeliveryAddress']);
 
-        Route::get('/thanks',[ProductsController::class,'thanks']);
-
-        Route::match(['GET','POST'],'/size-calculator',[UsersController::class,'sizeCalculator'])->name('calculator');
-        //Route::post('/size-calculator-tops',[UsersController::class,'sizeCalculatorTops'])->name('calculatorTops');
-        //Route::post('/size-calculator-bottoms',[UsersController::class,'sizeCalculatorBottoms'])->name('calculatorBottoms');
+        Route::get('/thanks',[ProductsController::class,'thanks']);     
 
         Route::match(['GET','POST'],'/measurement',[UsersController::class,'measurement'])->name('measurement');
     });

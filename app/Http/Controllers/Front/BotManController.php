@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Conversations\delivery;
+use App\Http\Conversations\recommend;
 use App\Models\Order;
 use \BotMan\BotMan\BotMan;
 use BotMan\BotMan\BotManFactory;
+use BotMan\BotMan\Cache\LaravelCache;
 use BotMan\BotMan\Drivers\DriverManager;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Actions\Button;
@@ -15,7 +18,7 @@ use BotMan\BotMan\Middleware\Dialogflow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use shipping_status;
+
 
 class BotManController extends Controller
 {
@@ -65,24 +68,38 @@ public function handle()
 {
     
         $botman = app('botman');
-
+        //symphoney cache
+        //$config = ['web'=>['matchingData'=>['driver'=>'web']]];
+        //$botman = BotManFactory::create($config, new LaravelCache());
         $botman->hears('{message}', function ($botman, $message) {
 
             // When user initiates the conversation with $message
-            if ($message == 'hi' || $message == 'hello' || $message == 'hey') {
+            // When keyword matches
+            //if ('._(Hi|Hello|Hey)._') {
+            if ($message == 'hi' || $message == 'hey' || $message == 'hello') {
                 // Check if user is login
                 if (Auth::check()) {
                     $user = Auth::user()->name;
+                    $botman->typesAndWaits(1);
                     $botman->reply("Hello ".$user.". I'm a chatbot. I'm always here to help you with your issues.");
+                    $botman->typesAndWaits(1);
                     $this->option($botman);
                 }else {
+                    $botman->typesAndWaits(1);
                     $this->askName($botman);
+                    $botman->typesAndWaits(2);
                     $this->option($botman);
+                    //$botman->startConversation(new shipping_status);
                 }    
-            } else {
+            } elseif ($message == 'thank you') {
+                $botman->reply("No Worries. Have a pleasant day! ");
+            } 
+            
+            else {
                 $botman->reply("write 'hi' to start the conversation");
             }
         });
+
         $botman->listen();
     
 }
@@ -102,29 +119,28 @@ public function handle()
     public function option($bot) {
         $question = Question::create('Please select a category for your question')
         ->fallback('Unable to get your question, Please select from the provided category')
-        ->callbackId('create_options')
+        ->callbackId('create_main_options')
         ->addButtons([
-            Button::create('Shipping Status')->value('status'),
-            Button::create('My Orders')->value('orders'),
+            Button::create('Account')->value('account'),
+            Button::create('Delivery')->value('delivery'),
+            Button::create('Cloths Recommendation based on Body Shape')->value('recommend'),
         ]);
         $bot->ask($question, function (Answer $answer) {
             // Detect if button was clicked:
             if ($answer->isInteractiveMessageReply()) {
-                $selectedValue = $answer->getValue(); // will be either 'yes' or 'no'
-                $selectedText = $answer->getText(); // will be either 'Of course' or 'Hell no!'
-                if ($selectedValue == "status") {
-                    // display order status
-                    //$this->say('clicked ');
-                    //$this->bot->startConversation(new shipping_status);
-                    //$order = Order::select('id','order_status')->where('user_id',Auth::user()->id)->get()->first->toArray();
-                    //dd($order); die;
-                    //$this->reply("Your order id".$order['id'].", the status is ".$order['order_status']);
+                $selectedValue = $answer->getValue(); 
+                $selectedText = $answer->getText(); 
+
+                if ($selectedValue == "delivery") {
+                    // Delivery topic
+                    $this->say($selectedText);
+                    $this->bot->startConversation(new delivery);
+                } elseif ($selectedValue == "recommend") {
+                    // Recommend user cloths based on body shape
+                    $this->bot->startConversation(new recommend);
                 }
                 
             }
-
-                
-
         });
     }
 }

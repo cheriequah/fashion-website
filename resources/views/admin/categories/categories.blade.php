@@ -32,6 +32,7 @@
                 <thead>
                     <tr>
                     <th>ID</th>
+                    <th>Image</th>
                     <th>Name</th>
                     <th>Parent Category</th>       
                     <th>Slug</th>
@@ -44,6 +45,13 @@
                     @foreach ($categories as $category)
                     <tr>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $category->id }}</strong></td>
+                        <td>
+                            <?php $product_img_path = "assets/img/category_images/small/".$category->image ?>
+                            @if (!empty($category->image)  && file_exists($product_img_path))
+                                <img style="width: 100px;" src="{{ asset('assets/img/category_images/small/'.$category->image) }}" alt="">
+                            @else
+                                <img style="width: 100px;" src="{{ asset('assets/img/category_images/small/no_image.png') }}" alt="">
+                            @endif</td>
                         <td>{{ $category->name }}</td>
                         <td> 
                             @if (!isset($category->parentcategory->name))

@@ -35,9 +35,8 @@
                     <th>Image</th>
                     <th>Name</th>
                     <th>Code</th>       
-                    <th>Description</th>
                     <th>Color</th>
-                    <th>Price</th>
+                    <th>Price (RM)</th>
                     <th>Discount</th>
                     <th>Category</th>
                     <th>Pattern Type</th>
@@ -62,7 +61,6 @@
                             @endif</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->code }}</td>
-                        <td>{{ $product->description }}</td>
                         <td>{{ $product->color->type }}</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->discount }}</td>

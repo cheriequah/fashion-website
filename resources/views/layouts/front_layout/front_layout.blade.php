@@ -79,7 +79,12 @@
     <!-- Validation -->
     <script>
         var botmanWidget = {
-        aboutText: 'Write Something',
+        title:'Pearl Chatbot',
+        mainColor:'#0d6efd',
+        aboutText: 'LiveAgent',
+        aboutLink: 'http://127.0.0.1:8000/liveagent',
+        bubbleBackground:'#0d6efd',
+        headerTextColor: '#fff',
         introMessage: "✋ Hi! Welcome to Pearl Wonder!"
         };
       </script>
