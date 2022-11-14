@@ -78,10 +78,6 @@ $colors = Color::getColors();
                         <td>RM {{ $total_price }}</td>
                     </tr>
                     <tr>
-                        <th colspan="5">Discount</th>
-                        <td>RM 0</td>
-                    </tr>
-                    <tr>
                         <th colspan="5">Shipping</th>
                         <td>RM 0</td>
                     </tr>
@@ -135,12 +131,12 @@ $colors = Color::getColors();
                     <h4 class="font-weight-semi-bold m-0">Payment</h4>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <div class="custom-control custom-radio">
                             <input type="radio" class="custom-control-input" name="payment_method" value="paypal" id="paypal">
                             <label class="custom-control-label" for="paypal">Paypal</label>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <div class="custom-control custom-radio">
                             <input type="radio" class="custom-control-input" name="payment_method" value="COD" id="cod">

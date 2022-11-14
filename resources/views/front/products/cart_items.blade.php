@@ -17,7 +17,7 @@
         @foreach ($userCartItems as $cartItem)
         <?php $productPriceAttr = Product::getDiscountAttrPrice($cartItem['product_id'],$cartItem['size']); ?>
         <tr>
-            <td class="align-middle"><img src="{{ asset('assets/img/product_images/small/'.$cartItem['product']['image']) }}" alt="" style="width: 50px;"></td>
+            <td class="align-middle"><img src="{{ asset('assets/img/product_images/small/'.$cartItem['product']['image']) }}" alt="" style="width: 100px;"></td>
             <td class="align-middle">{{ $cartItem['product']['name'] }} ({{ $cartItem['product']['code'] }})<br>
             Color: <br>
             Size: {{ $cartItem['size'] }}</td>
@@ -46,15 +46,11 @@
             <td>RM {{ $total_price }}</td>
         </tr>
         <tr>
-            <th colspan="5">Discount</th>
-            <td>RM 0</td>
-        </tr>
-        <tr>
             <th colspan="5">Shipping</th>
             <td>RM 0</td>
         </tr>
         <tr>
-            <th colspan="5">Grand Total (RM {{ $total_price }}-0)</th>
+            <th colspan="5">Grand Total </th>
             <td>RM {{ $total_price - 0 }}</td>
         </tr>
     </tbody>

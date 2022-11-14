@@ -45,7 +45,7 @@ class ProductsController extends Controller
                 //echo "Category exist"; die;
                 
                 $categoryDetails = Category::categoryDetails($slug);
-                //echo "<pre>"; print_r($categoryDetails); 
+
                 //check category_id column with value from the array, get products by category
                 $categoryProducts = Product::whereIn('category_id',$categoryDetails['categoryIds'])->where('status',1);
                 

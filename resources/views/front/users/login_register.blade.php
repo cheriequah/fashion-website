@@ -88,19 +88,11 @@
                         </div>
                       </div>
                     </div>
-  
-                    <div class="form-check d-flex justify-content-start mb-4">
-                      <input class="form-check-input" type="checkbox" value="" id="remember_me" name="remember"/>
-                      <label class="form-check-label" for="remember_me"> Remember password </label>
-                    </div>
 
                     <div class="pt-1 mb-4">
                       <button class="btn btn-dark btn-lg" type="submit" value="register" name="submit">Register</button>
                     </div>
-  
-                    <a class="small text-muted" href="">Forgot password?</a>
-                    <a href="#!" class="small text-muted">Terms of use.</a>
-                    <a href="#!" class="small text-muted">Privacy policy</a>
+
                   </form>
   
                 </div>                    
@@ -137,19 +129,10 @@
                           </div>
                         </div>
                       </div>
-    
-                      <div class="form-check d-flex justify-content-start mb-4">
-                        <input class="form-check-input" type="checkbox" value="" id="remember_me" name="remember"/>
-                        <label class="form-check-label" for="remember_me"> Remember password </label>
-                      </div>
   
                       <div class="pt-1 mb-4">
                         <button class="btn btn-dark btn-lg" type="submit" value="login" name="submit">Login</button>
                       </div>
-    
-                      <a class="small text-muted" href="">Forgot password?</a>
-                      <a href="#!" class="small text-muted">Terms of use.</a>
-                      <a href="#!" class="small text-muted">Privacy policy</a>
                     </form>
     
                   </div>                    

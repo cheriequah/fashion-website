@@ -75,18 +75,6 @@ $sleeves = Sleeve::getSleeves();
                                         </select>
                                     </div>                                   
                                 </form>
-        
-                                    <div class="sort-item product-per-page">
-                                        <select name="items-per-page" class="form-select form-select-sm">
-                                            <option value="12">12 per page</option>
-                                            <option value="15">15 per page</option>
-                                            <option value="18">18 per page</option>
-                                            <option value="21">21 per page</option>
-                                            <option value="24">24 per page</option>
-                                            <option value="27">27 per page</option>
-                                            <option value="30">30 per page</option>
-                                        </select>
-                                    </div>
                                 
                                  
 
@@ -122,8 +110,7 @@ $sleeves = Sleeve::getSleeves();
                             {{ $categoryProducts->appends(['orderby' => $_GET['orderby']])->links() }}   
                         @else
                             {{ $categoryProducts->links() }}
-                            <?php print_r($_GET); ?>
-                            <!--{{ $categoryProducts->appends(['orderby' => 'vote'])->links() }}   -->
+                            {{-- {{ $categoryProducts->appends(['orderby' => 'vote'])->links() }}   --}}
                         @endif
                         
                            

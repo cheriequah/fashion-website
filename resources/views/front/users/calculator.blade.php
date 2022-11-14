@@ -19,7 +19,7 @@
                   <form id="accountForm" method="POST" action="{{ route('calculator')}}">    
                     @csrf    
   
-                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Women Size Calculator (Tops)</h5>
+                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Women Size Calculator</h5>
 
                     @if(session()->has('success_message'))
                         <div class="alert alert-success alert-dismissible fade show">

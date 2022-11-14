@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>Total</td>
-                    <td>{{ $orderDetails['total'] }}</td> 
+                    <td>RM {{ $orderDetails['total'] }}</td> 
                 </tr>
                 <tr>
                     <td>Shipping Fee</td>

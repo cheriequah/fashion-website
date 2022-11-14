@@ -184,7 +184,7 @@ class UsersController extends Controller
             Session::forget('err_msg');
             Session::forget('success_message');
             
-            // Jquery and html can conflict with other script and stop working, lravel validation always work
+            // Jquery and html can conflict with other script and stop working, laravel validation always work
             $request->validate([
                 'name' => 'required',
                 'mobile' => 'required|numeric|digits:10',

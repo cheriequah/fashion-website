@@ -27,11 +27,11 @@
                         <h6>RM {{ $product['price'] }}</h6>
                     @endif
                 </div>
-                <h6>Pattern: {{ $product['pattern_id'] }}</h6>
+                {{-- <h6>Pattern: {{ $product['pattern_id'] }}</h6>
                 <h6>Occasion: {{ $product['occasion_id'] }}</h6>
                 <h6>Color: {{ $product['color_id'] }}</h6>
                 <h6>Sleeve: {{ $product['sleeve_id'] }}</h6>
-                <h6>Material: {{ $product['material_id'] }}</h6>
+                <h6>Material: {{ $product['material_id'] }}</h6> --}}
             </div>
             <div class="card-footer text-center bg-light border">
                 <a href="{{ url('product/'.$product['id']) }}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1 text-center"></i>View Detail</a>

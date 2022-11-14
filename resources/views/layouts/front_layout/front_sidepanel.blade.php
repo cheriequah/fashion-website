@@ -33,10 +33,9 @@
     <div class="border-bottom mb-4 pb-4">
         <h5 class="font-weight-semi-bold mb-4">Pattern</h5>
             @foreach ($patterns as $pattern)
-                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                <div class="custom-control custom-checkbox d-flex mb-3">
                     <input type="checkbox" class="pattern" id="{{ $pattern['id'] }}" name="{{ $pattern['name'] }}" value="{{ $pattern['id'] }}">
-                    <label class="custom-control-label" for="price-all">{{ $pattern['name'] }}</label>
-                    <span class="badge border font-weight-normal">{{ 1000 }}</span>
+                    <label class="custom-control-label px-4" for="price-all">{{ $pattern['name'] }}</label>
                 </div>
             @endforeach 
     </div>
@@ -46,10 +45,9 @@
         <h5 class="font-weight-semi-bold mb-4">Occasion</h5>
         <form>
             @foreach ($occasions as $occasion)
-                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                <div class="custom-control custom-checkbox d-flex mb-3">
                     <input type="checkbox" class="occasion" id="{{ $occasion->id }}" name="{{ $occasion->type }}" value="{{ $occasion->id }}">
-                    <label class="custom-control-label" for="price-1">{{ $occasion->type }}</label>
-                    <span class="badge border font-weight-normal">150</span>
+                    <label class="custom-control-label px-4" for="price-1">{{ $occasion->type }}</label>
                 </div>
             @endforeach
             
@@ -61,10 +59,9 @@
         <h5 class="font-weight-semi-bold mb-4">Color</h5>
         <form>
             @foreach ($colors as $color)
-                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                <div class="custom-control custom-checkbox d-flex mb-3">
                     <input type="checkbox" class="color" id="{{ $color->id }}" name="{{ $color->type }}" value="{{ $color->id }}">
-                    <label class="custom-control-label" for="color-1">{{ $color->type }}</label>
-                    <span class="badge border font-weight-normal">150</span>
+                    <label class="custom-control-label px-4" for="color-1">{{ $color->type }}</label>
                 </div>
             @endforeach
         </form>
@@ -76,10 +73,9 @@
         <h5 class="font-weight-semi-bold mb-4">Sleeve</h5>
         <form>
             @foreach ($sleeves as $sleeve)
-                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                <div class="custom-control custom-checkbox d-flex mb-3">
                     <input type="checkbox" class="sleeve" id="{{ $sleeve->id }}" name="{{ $sleeve->type }}" value="{{ $sleeve->id }}">
-                    <label class="custom-control-label" for="color-1">{{ $sleeve->type }}</label>
-                    <span class="badge border font-weight-normal">150</span>
+                    <label class="custom-control-label px-4" for="color-1">{{ $sleeve->type }}</label>
                 </div>
             @endforeach
         </form>
@@ -91,46 +87,13 @@
         <h5 class="font-weight-semi-bold mb-4">Material</h5>
         <form>
             @foreach ($materials as $material)
-                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                <div class="custom-control custom-checkbox d-flex mb-3">
                     <input type="checkbox" class="material" id="{{ $material->id }}" name="{{ $material->type }}" value="{{ $material->id }}">
-                    <label class="custom-control-label" for="color-1">{{ $material->type }}</label>
-                    <span class="badge border font-weight-normal">150</span>
+                    <label class="custom-control-label px-4" for="color-1">{{ $material->type }}</label>
                 </div>
             @endforeach
         </form>
     </div>
     <!-- Material End -->
 
-    <!-- Size Start -->
-    <div class="mb-5">
-        <h5 class="font-weight-semi-bold mb-4">Size</h5>
-        <form>
-            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                <input type="checkbox" class=" id="size-1">
-                <label class="custom-control-label" for="size-1">XS</label>
-                <span class="badge border font-weight-normal">150</span>
-            </div>
-            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                <input type="checkbox" class=" id="size-2">
-                <label class="custom-control-label" for="size-2">S</label>
-                <span class="badge border font-weight-normal">295</span>
-            </div>
-            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                <input type="checkbox" class=" id="size-3">
-                <label class="custom-control-label" for="size-3">M</label>
-                <span class="badge border font-weight-normal">246</span>
-            </div>
-            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                <input type="checkbox" class=" id="size-4">
-                <label class="custom-control-label" for="size-4">L</label>
-                <span class="badge border font-weight-normal">145</span>
-            </div>
-            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                <input type="checkbox" class=" id="size-5">
-                <label class="custom-control-label" for="size-5">XL</label>
-                <span class="badge border font-weight-normal">168</span>
-            </div>
-        </form>
-    </div>
-    <!-- Size End -->
 </div>

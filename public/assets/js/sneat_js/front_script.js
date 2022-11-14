@@ -7,7 +7,8 @@ $(document).ready(function() {
         }
     });
 
-    //pass data from form to jquery, passing this data from jquery to ajax, passing this data to this slug, then it calls the controller function, do all the queries inside then pass back to ajax
+    //pass data from form to jquery, passing this data from jquery to ajax, passing this data to this slug, 
+    // then it calls the controller function, do all the queries inside then pass back to ajax
     $('#orderby').on('change',function() {
         //alert("hello")
         var orderby = $(this).val();
