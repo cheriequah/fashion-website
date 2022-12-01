@@ -16,6 +16,7 @@ use Symfony\Component\Process\Process;
 
 class UsersController extends Controller
 {
+    // Login Register Page
     public function loginRegister() {
         return view('front.users.login_register');
     }

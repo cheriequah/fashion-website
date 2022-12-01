@@ -58,6 +58,7 @@ class ProductController extends Controller
             //Edit Product
             //get details
             $productData = Product::with(['category','color','pattern','occasion','sleeve','material'])->where('id',$id)->first();   
+            //dd($productData);
             //to save data
             $product = Product::find($id);   
             $message = "Product Updated Succesfully!";
@@ -72,7 +73,20 @@ class ProductController extends Controller
                 //space and string
                 'product_name' => 'regex:/^[a-zA-Z\s]*$/',
                 'product_code' => 'regex:/^[\w-]*$/',
-                'product_price' => 'numeric',                
+                'product_price' => 'numeric',  
+                'color_id' => 'required',       
+                'pattern_id' => 'required',    
+                'occasion_id' => 'required',        
+                'sleeve_id' => 'required',        
+                'material_id' => 'required',            
+            ],
+            [
+                // custom error messages
+                'color_id.required' => 'Please select a color!',
+                'pattern_id.required' => 'Please select a pattern!',
+                'occasion_id.required' => 'Please select a occasion!',
+                'sleeve_id.required' => 'Please select a sleeve!',
+                'material_id.required' => 'Please select a material!',
             ]);
 
             if (empty($data['is_featured'])) {
@@ -138,7 +152,8 @@ class ProductController extends Controller
         $materials = Material::get();         
 
         $categoryLevels = Category::with(['subcategories'])->where(['parent_id'=>NULL,'status'=>1])->get();
-/*
+        //dd($categoryLevels);
+/*  
         $colorArray = array('');
         $patternArray = array('');
         $occasionArray = array('');

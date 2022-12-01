@@ -70,10 +70,11 @@
                   <div class="mb-3">
                     <label for="color_id" class="form-label">Product Color</label>
                     <select name="color_id" id="color_id" class="form-select" >
-                      <option selected>Select Product Color</option>
+                      <option value="">Select Product Color</option>
                       @foreach ($colors as $color)
                         <option value="{{ $color->id }}" 
                           @if (isset($productData['color_id']) && $productData['color_id']==$color['id'])) selected=""
+                          @elseif (!empty(old('color_id')) && old('color_id')==$color['id']) selected=""
                           @endif>{{ $color->type }}</option>
                       @endforeach   
                     </select>
@@ -89,12 +90,20 @@
                     <select name="category_id" id="category_id" class="form-select"> 
                       @if (!empty($categoryLevels))
                         @foreach ($categoryLevels as $categoryLevel)
-                          <option value="{{ $categoryLevel->id }}" @if (isset($productData['category_id']) && $productData['category_id']==$categoryLevel['id']) selected=""
+                          <option value="{{ $categoryLevel->id }}" 
+                            {{-- When Edit Details --}}
+                            @if (isset($productData['category_id']) && $productData['category_id']==$categoryLevel['id']) selected=""
+                            {{-- When Error occurs, select old info --}}
+                            @elseif (!empty(old('category_id')) && old('category_id')==$categoryLevel['id']) selected=""
                             @endif>{{ $categoryLevel->name }}</option>
 
                           @if (!empty($categoryLevel->subcategories))
                             @foreach ($categoryLevel->subcategories as $subcategory)
-                              <option value="{{ $subcategory->id }}" @if (isset($productData['category_id']) && $productData['category_id']==$subcategory['id']) selected=""
+                              <option value="{{ $subcategory->id }}" 
+                                {{-- When Edit Details --}}
+                                @if (isset($productData['category_id']) && $productData['category_id']==$subcategory['id']) selected=""
+                                {{-- When Error occurs, select old info --}}
+                                @elseif (!empty(old('category_id')) && old('category_id')==$subcategory['id']) selected=""
                                 @endif>&nbsp;&raquo;&nbsp;{{ $subcategory->name }}</option>
                             @endforeach
                           @endif
@@ -128,9 +137,11 @@
                 <div class="mb-3">
                     <label for="pattern_id" class="form-label">Product Pattern</label>
                     <select name="pattern_id" id="pattern_id" class="form-select" >
-                      <option>Select Product Pattern</option>
+                      <option value="">Select Product Pattern</option>
                       @foreach ($patterns as $pattern)
-                        <option value="{{ $pattern->id }}" @if (isset($productData['pattern_id']) && $productData['pattern_id']==$pattern['id'])) selected=""
+                        <option value="{{ $pattern->id }}" 
+                          @if (isset($productData['pattern_id']) && $productData['pattern_id']==$pattern['id'])) selected=""
+                          @elseif (!empty(old('pattern_id')) && old('pattern_id')==$pattern['id']) selected=""
                           @endif>{{ $pattern->name }}</option>
                       @endforeach                
                     </select>
@@ -139,9 +150,11 @@
                 <div class="mb-3">
                     <label for="occasion_id" class="form-label">Product Occasion</label>
                     <select name="occasion_id" id="occasion_id" class="form-select" >
-                      <option selected>Select Product Occasion</option>
+                      <option value="">Select Product Occasion</option>
                       @foreach ($occasions as $occasion)
-                        <option value="{{ $occasion->id }}" @if (isset($productData['occasion_id']) && $productData['occasion_id']==$occasion['id'])) selected=""
+                        <option value="{{ $occasion->id }}" 
+                          @if (isset($productData['occasion_id']) && $productData['occasion_id']==$occasion['id'])) selected=""
+                          @elseif (!empty(old('occasion_id')) && old('occasion_id')==$occasion['id']) selected=""
                           @endif>{{ $occasion->type }}</option>
                       @endforeach    
                     </select>
@@ -150,9 +163,11 @@
                 <div class="mb-3">
                     <label for="sleeve_id" class="form-label">Product Sleeve</label>
                     <select name="sleeve_id" id="sleeve_id" class="form-select" >
-                      <option selected>Select Product Sleeve</option>
+                      <option value="">Select Product Sleeve</option>
                       @foreach ($sleeves as $sleeve)
-                        <option value="{{ $sleeve->id }}"@if (isset($productData['sleeve_id']) && $productData['sleeve_id']==$sleeve['id'])) selected=""
+                        <option value="{{ $sleeve->id }}"
+                          @if (isset($productData['sleeve_id']) && $productData['sleeve_id']==$sleeve['id'])) selected=""
+                          @elseif (!empty(old('sleeve_id')) && old('sleeve_id')==$sleeve['id']) selected=""
                           @endif>{{ $sleeve->type }}</option>
                       @endforeach    
                     </select>
@@ -161,9 +176,11 @@
                 <div class="mb-3">
                     <label for="material_id" class="form-label">Product Material</label>
                     <select name="material_id" id="material_id" class="form-select" >
-                      <option selected>Select Product Material</option>
+                      <option value="">Select Product Material</option>
                       @foreach ($materials as $material)
-                        <option value="{{ $material->id }}"@if (isset($productData['material_id']) && $productData['material_id']==$material['id'])) selected=""
+                        <option value="{{ $material->id }}"
+                          @if (isset($productData['material_id']) && $productData['material_id']==$material['id'])) selected=""
+                          @elseif (!empty(old('material_id')) && old('material_id')==$material['id']) selected=""
                           @endif>{{ $material->type }}</option>
                       @endforeach    
                     </select>
