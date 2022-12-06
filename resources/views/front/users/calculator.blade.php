@@ -47,32 +47,17 @@
 
                     <label class="form-label required" for="form-bust">Bust</label>
                     <div class="form-outline input-group mb-4">
-                      <input type="number" id="bust" name="bust" class="form-control form-control-sm" value="{{ old('bust') }}" placeholder="Enter Bust" />  
-                      <div class="input-group-append">
-                        <div class="input-group-text">
-                          <span class="fas fa-envelope"></span>
-                        </div>
-                      </div>                       
+                      <input type="number" id="bust" name="bust" class="form-control form-control-sm" value="{{ old('bust') }}" placeholder="Enter Bust" />                                          
                     </div>
 
                     <label class="form-label required" for="form-waist">Waist</label>
                     <div class="form-outline input-group mb-4">                     
-                      <input type="number" id="waist" name="waist" class="form-control form-control-sm" value="" placeholder="Enter Waist" />  
-                      <div class="input-group-append">
-                        <div class="input-group-text">
-                          <span class="fas fa-envelope"></span>
-                        </div>
-                      </div>                       
+                      <input type="number" id="waist" name="waist" class="form-control form-control-sm" value="" placeholder="Enter Waist" />                                          
                     </div>
 
                     <label class="form-label required" for="form-hip">Hip</label>
                       <div class="form-outline input-group mb-4">                     
-                        <input type="number" id="hip" name="hip" class="form-control form-control-sm" value="" placeholder="Enter Hip" />  
-                        <div class="input-group-append">
-                          <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
-                          </div>
-                        </div>                       
+                        <input type="number" id="hip" name="hip" class="form-control form-control-sm" value="" placeholder="Enter Hip" />                     
                       </div>
                     
                     <div class="mb-4">

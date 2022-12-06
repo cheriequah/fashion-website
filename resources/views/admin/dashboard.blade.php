@@ -26,7 +26,7 @@
                 </div>    
             </div>
             <a href="#"><span class="fw-semibold d-block mb-1">Categories</span></a>
-            <h3 class="card-title mb-1">5</h3>             
+            <h3 class="card-title mb-1">{{ $categoryCount }}</h3>             
             </div>
         </div>
         </div>
@@ -44,7 +44,7 @@
                 </div>                
             </div>
             <a href="#"><span class="fw-semibold d-block mb-1">Products</span></a>
-            <h3 class="card-title text-nowrap mb-1">100</h3>
+            <h3 class="card-title text-nowrap mb-1">{{ $productCount }}</h3>
             </div>
         </div>
         </div>
@@ -62,7 +62,7 @@
                 </div>                
             </div>
             <a href="#"><span class="fw-semibold d-block mb-1">Total Sales</span></a>
-            <h3 class="card-title text-nowrap mb-1">RM 4,679</h3>
+            <h3 class="card-title text-nowrap mb-1">RM {{ $orderSales }}</h3>
             </div>
         </div>
         </div>
@@ -81,7 +81,7 @@
                   </div>                
                 </div>
                 <a href=""><span class="fw-semibold d-block mb-1">Orders</span></a>
-                <h3 class="card-title text-nowrap mb-1">100</h3>
+                <h3 class="card-title text-nowrap mb-1">{{ $orderCount }}</h3>
               </div>
             </div>
         </div>

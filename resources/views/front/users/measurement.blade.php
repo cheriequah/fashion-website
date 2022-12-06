@@ -50,34 +50,19 @@
                     <label class="form-label required" for="form-bust">Bust</label>
                     <div class="form-outline input-group mb-4">
                       <input type="number" id="bust" name="bust" class="form-control form-control-sm" @if (!empty($measurementDetails['bust']))
-                        value="{{ $measurementDetails['bust'] }}" @endif placeholder="Enter Bust" />  
-                      <div class="input-group-append">
-                        <div class="input-group-text">
-                          <span class="fas fa-envelope"></span>
-                        </div>
-                      </div>                       
+                        value="{{ $measurementDetails['bust'] }}" @endif placeholder="Enter Bust" />                       
                     </div>
 
                     <label class="form-label required" for="form-waist">Waist</label>
                     <div class="form-outline input-group mb-4">                     
                       <input type="number" id="waist" name="waist" class="form-control form-control-sm" @if (!empty($measurementDetails['waist']))
-                        value="{{ $measurementDetails['waist'] }}" @endif placeholder="Enter Waist" />  
-                      <div class="input-group-append">
-                        <div class="input-group-text">
-                          <span class="fas fa-envelope"></span>
-                        </div>
-                      </div>                       
+                        value="{{ $measurementDetails['waist'] }}" @endif placeholder="Enter Waist" />                        
                     </div>
                     
                     <label class="form-label required" for="form-hip">Hip</label>
                     <div class="form-outline input-group mb-4">                     
                       <input type="number" id="hip" name="hip" class="form-control form-control-sm" @if (!empty($measurementDetails['hip']))
-                        value="{{ $measurementDetails['hip'] }}" @endif placeholder="Enter Hip" />  
-                      <div class="input-group-append">
-                        <div class="input-group-text">
-                          <span class="fas fa-envelope"></span>
-                        </div>
-                      </div>                       
+                        value="{{ $measurementDetails['hip'] }}" @endif placeholder="Enter Hip" />                               
                     </div>
                     
                     <div class="mb-4">

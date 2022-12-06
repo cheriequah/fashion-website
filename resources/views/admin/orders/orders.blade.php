@@ -56,7 +56,6 @@
                         <td>
                             <a title="View Order Details" href="{{ url('admin/orders/'.$order['id']) }}"><i class="bx bx-detail me-2"></i></a> 
                             @if ($order['order_status'] == "Delivered")
-                            <a title="View Order Invoice" target="_blank" href="{{ url('admin/orders/'.$order['id']) }}"><i class="bx bx-receipt me-2"></i></a>   
                             <a title="Print PDF Invoice" target="_blank" href="{{ url('admin/print-pdf-invoice/'.$order['id']) }}"><i class="bx bxs-file-pdf me-2"></i></a>   
                             
                             @endif                 

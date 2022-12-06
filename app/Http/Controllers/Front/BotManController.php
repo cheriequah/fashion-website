@@ -121,7 +121,6 @@ public function handle()
         ->fallback('Unable to get your question, Please select from the provided category')
         ->callbackId('create_main_options')
         ->addButtons([
-            Button::create('Account')->value('account'),
             Button::create('Delivery')->value('delivery'),
             Button::create('Cloths Recommendation based on Body Shape')->value('recommend'),
         ]);

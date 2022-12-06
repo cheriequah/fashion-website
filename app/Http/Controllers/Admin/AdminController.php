@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Category;
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +16,11 @@ class AdminController extends Controller
 {
     public function dashboard() {
         Session::put('page','dashboard');
-        return view('admin.dashboard');
+        $categoryCount = Category::all()->count();
+        $productCount = Product::all()->count();
+        $orderCount = Order::all()->count();
+        $orderSales = Order::select('total')->sum('total');
+        return view('admin.dashboard')->with(compact('categoryCount','productCount','orderCount','orderSales'));
     }
 
     public function settings() {

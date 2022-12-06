@@ -49,7 +49,7 @@ $colors = Color::getColors();
                         <th>Description</th>
                         <th>Price</th>
                         <th>Quantity</th>
-                        <th>Category/ Product Discount</th>
+                        <th>Product Discount</th>
                         <th>Total</th>
                         {{-- <th>Remove</th> --}}
                     </tr>

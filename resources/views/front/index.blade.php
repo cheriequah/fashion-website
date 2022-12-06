@@ -1,4 +1,6 @@
-<?php use App\Models\Product; ?>
+<?php 
+use App\Models\Product;
+use App\Models\Category; ?>
 
 @extends('layouts.front_layout.front_layout')
 @section('content')
@@ -15,7 +17,6 @@
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -24,7 +25,6 @@
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
             @foreach ($categories as $category)
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <p class="text-right">15 Products</p>
+                    <p class="text-right"><?php echo Category::categoryTotal($category['id']); ?> Products</p>
                     <a href="{{ url('/'.$category['slug']) }}" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="{{ asset('assets/img/category_images/large/'.$category['image']) }}" alt="">
                     </a>

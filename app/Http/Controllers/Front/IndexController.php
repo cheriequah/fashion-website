@@ -15,8 +15,7 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function index() {
-        $categories = Category::select('name','slug','image')->get()->toArray();
-        $featuredProductsCount = Product::where('is_featured','Yes')->count();
+        $categories = Category::select('id','name','slug','image')->get()->toArray();
         $featuredProducts = Product::where('is_featured','Yes')->get()->toArray();
         //$featuredProductsChunk = array_chunk($featuredProducts, 4);
         //echo "<pre>"; print_r($featuredProductsChunk); die;

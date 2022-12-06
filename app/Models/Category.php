@@ -40,8 +40,8 @@ class Category extends Model
         }
         else {
             $parentCategory = Category::select('name','slug')->where('id',$categoryDetails['parent_id'])->first()->toArray();
-            // Show Main category in breadcrumb
-            $breadcrumbs = '<a href="'.url($parentCategory['slug']).'" >'.$parentCategory['name'].'</a>&nbsp;&nbsp;<a href="'.url($categoryDetails['slug']).'" >'.$categoryDetails['name'].'</a>'; 
+            // Show Main category and subcategory in breadcrumb
+            $breadcrumbs = '<a href="'.url($parentCategory['slug']).'" >'.$parentCategory['name'].'</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="'.url($categoryDetails['slug']).'" >'.$categoryDetails['name'].'</a>'; 
         }
 
         //dd($categoryDetails); die;
@@ -52,5 +52,11 @@ class Category extends Model
         }
         //dd($categoryIds);
         return array('categoryIds'=>$categoryIds,'categoryDetails'=>$categoryDetails,'breadcrumbs'=>$breadcrumbs);
+    }
+
+    // Count number of products in each category
+    public static function categoryTotal($id) {
+        $categoryTotal = Product::where(['category_id'=>$id,'status'=>1])->count();
+        return $categoryTotal;
     }
 }

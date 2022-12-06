@@ -27,7 +27,6 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="{{ route('account') }}">My Profile</a></li>
                                 <li><a class="dropdown-item" href="{{ route('order') }}">My Orders</a></li>
-                                <li><a class="dropdown-item" href="{{ route('preferences') }}">My Preferences</a></li>
                                 <li><a class="dropdown-item" href="{{ route('measurement') }}">My Measurement</a></li>
                                 <li><a class="dropdown-item" href="{{ route('calculator') }}">Size Calculator</a></li>
                                 <li><a class="dropdown-item" href="{{ route('logoutUser')}}">Logout</a></li> 
