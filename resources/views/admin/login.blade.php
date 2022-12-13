@@ -68,18 +68,11 @@
                         </div>
                       </div>
                     </div>
-  
-                    <div class="form-check d-flex justify-content-start mb-4">
-                      <input class="form-check-input" type="checkbox" value="" id="remember_me" name="remember"/>
-                      <label class="form-check-label" for="remember_me"> Remember password </label>
-                    </div>
 
                     <div class="pt-1 mb-4">
                       <button class="btn btn-dark btn-lg" type="submit" value="login" name="submit">Login</button>
                     </div>
   
-                    <a class="small text-muted" href="">Forgot password?</a>
-                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#!">Register here</a></p>
                     <a href="#!" class="small text-muted">Terms of use.</a>
                     <a href="#!" class="small text-muted">Privacy policy</a>
                   </form>
